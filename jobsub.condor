@@ -1,0 +1,9 @@
+executable            = job.sh
+arguments             = $(ProcId)
+input                 = input
+output                = /afs/cern.ch/user/r/rgargiul/belleii/output/output.$(ProcId).out
+error                 = /afs/cern.ch/user/r/rgargiul/belleii/error/error.$(ProcId).err
+log                   = /afs/cern.ch/user/r/rgargiul/belleii/log/log.$(ClusterId).log
+requirements          = (OpSysAndVer =?= "AlmaLinux9")
++JobFlavour = "espresso"
+queue 1

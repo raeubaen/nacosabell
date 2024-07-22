@@ -138,11 +138,11 @@ def main():
                 l_particle_num = 0
             if is_event and is_meta:
                 getMetaInfo(m_meta_event,line.strip().split(' '))
-                m_num_particles[0] = m_meta_event.getNumParticles()#num_particles
-                m_event_weight[0] = m_meta_event.getEventWeight()#event_weight
-                m_event_scale[0] = m_meta_event.getEventScale()#event_scale
-                m_alpha_em[0] = m_meta_event.getAlphaEM()#alpha_em
-                m_alpha_s[0] = m_meta_event.getAlphaS()#alpha_s
+                m_num_particles[0] = m_meta_event.getNumParticles() #num_particles
+                m_event_weight[0] = 1 #event_weight
+                m_event_scale[0] = m_meta_event.getEventScale() #event_scale
+                m_alpha_em[0] = m_meta_event.getAlphaEM() #alpha_em
+                m_alpha_s[0] = m_meta_event.getAlphaS() #alpha_s
                 is_meta = False
                 continue
             elif is_event and not is_meta:

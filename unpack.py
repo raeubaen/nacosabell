@@ -68,6 +68,8 @@ for ev in range(maxevents):
         px1, px2, py1, py2, pz1, pz2 = intree.px[2], intree.px[3], intree.py[2], intree.py[3], intree.pz[2], intree.pz[3]
     elif intree.numParticles == 5:
         px1, px2, py1, py2, pz1, pz2 = intree.px[3], intree.px[4], intree.py[3], intree.py[4], intree.pz[3], intree.pz[4]
+    elif intree.numParticles == 7:
+        px1, px2, py1, py2, pz1, pz2 = intree.px[5], intree.px[6], intree.py[5], intree.py[6], intree.pz[5], intree.pz[6]
     else:
         print("Problem: numParticles != 4 and != 5")
 
