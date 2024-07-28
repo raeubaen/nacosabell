@@ -23,11 +23,25 @@ bkg = np.delete(bkg, 5, 1)
 
 bkg = np.delete(bkg, 2, 1)
 
+bkg = np.delete(bkg, 7, 1)
+
+bkg = np.delete(bkg, 5, 1)
+
+bkg = np.delete(bkg, 7, 1)
+
+
 sig = np.load("TM_smeared.npy")[:, :-1]
 
 sig = np.delete(sig, 5, 1)
 
 sig = np.delete(sig, 2, 1)
+
+sig = np.delete(sig, 7, 1)
+
+sig = np.delete(sig, 5, 1)
+
+sig = np.delete(sig, 7, 1)
+
 
 bkg_label = np.zeros(len(bkg))
 sig_label = np.ones(len(sig))
@@ -38,7 +52,7 @@ print(X.shape)
 print(y.shape)
 
 X_trainval, X_test, y_trainval, y_test = train_test_split(
-    X, y, test_size=0.9, train_size=0.1, random_state=42
+    X, y, test_size=0.1, train_size=0.9, random_state=42
 )
 
 X_train, X_val, y_train, y_val = train_test_split(
@@ -49,7 +63,7 @@ print(y_test.shape)
 print(y_test)
 
 # Specify sufficient boosting iterations to reach a minimum
-num_round = 2500
+num_round = 5000
 
 clf = xgb.XGBClassifier(device="cuda", n_estimators=num_round)
 
@@ -74,11 +88,11 @@ else:
 
 sig_preds = clf.predict_proba(sig)[:, 1]
 print("sig", sig.shape)
-passing_signals = sig[sig_preds > 0.27]
+passing_signals = sig[sig_preds > 0.6]
 print("pass sig", passing_signals.shape)
 bkg_preds = clf.predict_proba(bkg)[:, 1]
 print("bkg", bkg.shape)
-passing_bkgs = bkg[bkg_preds > 0.27]
+passing_bkgs = bkg[bkg_preds > 0.6]
 print("pass bkg", passing_bkgs.shape)
 
 sig = np.load("TM_smeared.npy")
